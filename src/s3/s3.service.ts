@@ -12,7 +12,7 @@ export class S3Service {
 
   constructor() {
     this.s3 = new S3({
-      region: ' sa-east-1',
+      region: 'sa-east-1',
       accessKeyId: process.env.AWS_ACCESS_KEY_ID,
       secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
     });
@@ -27,9 +27,8 @@ export class S3Service {
     const params = {
       Bucket: this.bucketName,
       Key: key,
-      Expires: 60, // URL válida por 60 segundos
+      Expires: 260, // URL válida por 60 segundos
       ContentType: fileType,
-      ACL: 'public-read',
     };
 
     return this.s3.getSignedUrlPromise('putObject', params);
