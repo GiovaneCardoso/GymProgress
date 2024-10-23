@@ -22,12 +22,13 @@ export class S3Service {
     fileName: string,
     fileType: string,
   ): Promise<string> {
-    const key = `${uuidv4()}-${fileName}`;
+    console.log(fileName, fileType);
+    const key = `${fileName}`;
 
     const params = {
       Bucket: this.bucketName,
       Key: key,
-      Expires: 260, // URL válida por 60 segundos
+      Expires: 260,
       ContentType: fileType,
     };
 
